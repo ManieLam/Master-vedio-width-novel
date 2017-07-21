@@ -1,0 +1,31 @@
+<!-- pages/home/detail.wxml -->
+<import src="../template/musicBar"/>
+<import src="../../utils/wxParse/wxParse.wxml"/>
+<view class="m-lists_bar">
+    <!-- 头部 -->
+    <view class="single-header"  >
+        <view class="single-header__hd">
+            <text class="hd_title">{{bookList.title}}</text>
+            <image class=" min_img" src="../../images/circle-stop_sm.png" wx:if="{{playing  && isCurPlay}}"  bindtap="stopAudio" ></image>
+            <image class=" min_img" src="../../images/circle-start_sm.png" wx:if="{{!playing ||!isCurPlay}}" data-index="0" data-type="1" bindtap="playAudio"></image>
+        </view>
+        <view class="single-header__bd">
+            <view class="bd_left">
+                <view class="font_min desc_info" >原著：{{bookList.song[0].writer}}</view>
+                <view  class="font_min desc_info">主播：{{bookList.song[0].singer}}</view>
+            </view>
+            <view class="bd_right">
+                <button size="mini" class="btn_min {{is_faved?'btn_min_act':''}}" bindtap="bindColToggle" hover-class="btn_min_hover"> {{is_faved?'已收藏':'我要收藏'}}</button>
+            </view>
+        </view>
+    </view>
+    <!-- 内容介绍 -->
+    <view class="single-block">
+       <template is="wxParse" data="{{wxParseData:content.nodes}}" ></template>
+    </view>
+  
+    
+</view>
+<view style="height:142rpx;" wx:if="{{musicData.playList}}"></view>
+
+<template is="musicBar" data="{{musicData}}"></template>

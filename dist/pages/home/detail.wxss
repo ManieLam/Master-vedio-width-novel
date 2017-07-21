@@ -1,0 +1,16 @@
+/* pages/home/detail.wxss */
+
+@import "../../utils/wxParse/wxParse.wxss";
+.wxParse-p {
+    margin: 10rpx 20rpx;
+    overflow: hidden;
+    /*line-height: 2.2;*/
+}
+
+.wxParse-p:not(:first-child) {
+    margin: 20rpx;
+}
+
+.wxParse-li-text {
+    padding-left: 10rpx;
+}

@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<view class="c-newsList">
+    <view class="c-news" wx:for="{{topics}}" wx:for-index="i" wx:for-item="topic" wx:key="topic.id">
+        <view class="c-news__header">
+            <view class="c-news__account">
+                <image class="c-news__account__avatar" src="{{topic.tag.thumb}}" background-size="cover"></image>
+                <view class="c-news__account__content">
+                    <view class="c-news__account__name">{{topic.tag.name}}</view>
+                    <view class="c-news__account__meta">{{topic.time}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- END .c-news__header -->
+        <navigator url="../single/index?id={{topic.id}}" class="c-news__body">
+            <view class="c-news__text">
+                <view wx:for="{{topic.texts}}" wx:key="text" wx:for-item="text" wx:for-index="j">{{text}}<view wx:if="{{j == topic.texts.length - 1 && topic.buy_url}}" class="c-action" catchtap="copyUrl" data-url="{{topic.buy_url}}">
+                    <view class="c-action__icon icon-cart"></view>
+                    <view class="c-action__text">立即购买</view>
+                </view>
+                <view wx:elif="{{j == topic.texts.length - 1 && topic.code}}" class="c-action" catchtap="copyCode" data-code="{{topic.code}}">
+                    <view class="c-action__icon icon-cart"></view>
+                    <view class="c-action__text">立即购买</view>
+                </view>
+                </view>
+            </view>
+            <!-- END .c-news__text -->
+            <view class="c-grid c-grid--{{topic.images.length}}" wx:if="{{topic.topic_type === 'image'}}">
+                <view wx:for="{{topic.images}}" wx:for-index="j" wx:for-item="img" wx:key="item.thumb" class="c-grid__item is-{{j+1}}">
+                    <image src="{{img.thumb}}" mode="widthFix" catchtap="preview" data-url="{{img.original}}" data-topic="{{i}}"></image>
+                </view>
+                <!-- END .c-grid__item -->
+            </view>
+            <!-- END .c-grid -->
+            <view class="c-video" wx:elif="{{topic.topic_type === 'video'}}">
+                <video mode="aspectFit" src="{{topic.video.src}}" poster="{{topic.video.poster}}"></video>
+                <view class="c-video__overlay"></view>
+                <view class="icon-video"></view>
+            </view>
+        </navigator>
+
+        <view  class="c-audio" hidden="{{topic.topic_type !== 'audio'}}" >
+            <audio poster="{{topic.tag.thumb}}" name="{{topic.title}}" author="{{topic.author ? topic.author : ''}}" src="{{topic.audio}}" id="myAudio{{topic.id}}" controls></audio>
+        </view>
+
+        <!-- END .c-news__body -->
+        <navigator url="../single/index?id={{topic.id}}" class="c-news__footer">
+            <view class="c-news__meta">{{topic.like_count}} 点赞</view>
+            <view class="c-news__meta">{{topic.reply_count}} 评论</view>
+        </navigator>
+        <!-- END .c-news__footer -->
+    </view>
+    <!-- END .c-news -->
+    <view class="hint" hidden="{{!isDone}}">
+        <view class="hint__line"></view>
+        <view>我是有底线的</view>
+        <view class="hint__line"></view>
+    </view>
+</view>

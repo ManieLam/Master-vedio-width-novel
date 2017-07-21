@@ -1,0 +1,62 @@
+// 相册
+.c-grid {
+    position: relative;
+    display: block;
+    margin-left: -5px;
+    margin-right: -5px;
+    @include clearfix;
+}
+
+.c-grid__item {
+    float: left;
+    width: 33.33333333%;
+    padding: 5px;
+    image {
+        width: 100%;
+        vertical-align: bottom;
+    }
+}
+
+.c-grid--1 {
+    .c-grid__item {
+        width: 160px;
+    }
+}
+
+.c-grid--4 {
+    .c-grid__item.is-3 {
+        clear: left;
+    }
+}
+
+// 视频
+.c-video {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    background-color: #000;
+    .c-video__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 15;
+    }
+    .icon-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -25px;
+        margin-left: -25px;
+        z-index: 99;
+    }
+}
+.c-audio{
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    audio{
+        max-width: 95%;    
+    }
+}

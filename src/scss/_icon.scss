@@ -1,0 +1,35 @@
+.icon {
+    width: 38rpx;
+    height: 38rpx;
+    vertical-align: middle;
+}
+
+.icon_big {
+    width: 74rpx;
+    height: 74rpx;
+    vertical-align: middle;
+}
+
+.icon-mar {
+    margin: 20rpx;
+}
+
+.icon-start {
+    background-image: url(circle-start.png);
+    background-size: 100% 100%;
+}
+
+.icon-stop {
+    background-image: url(circle-stop.png);
+    background-size: 100% 100%;
+}
+
+.icon-right {
+    background-image: url(playright.png);
+    background-size: 100% 100%;
+}
+
+.icon-left {
+    background-image: url(playleft.png);
+    background-size: 100% 100%;
+}

@@ -1,0 +1,23 @@
+{
+    "pages": [
+
+        "pages/home/index",
+        "pages/home/detail",
+        "pages/home/articalList",
+
+        "pages/user/fav",
+
+        "pages/tag/index",
+        "pages/single/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "粤语制造",
+        "navigationBarTextStyle": "black"
+    },
+    "networkTimeout": {
+        "request": 5000
+    }
+
+}

@@ -1,0 +1,150 @@
+.m-lists_bar {
+    background: #eee;
+    position: relative;
+}
+
+//block列表
+.lists-block {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    padding: 0 5px 10px;
+    background: #fff;
+}
+
+.lists-block__header {
+    line-height: 2.2;
+    // padding: 0 10px;
+}
+
+.lists-block__content {
+    padding-top: 5px;
+    // width: 100%;
+    text-align: center;
+    // margin: 0 10px;
+    @include clearfix();
+}
+
+.lists-block__cell {
+    float: left;
+    width: 33.333333333333336%;
+    // height: 290rpx;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    box-sizing: border-box;
+}
+
+.lists-block__cell:nth-child(3n) {
+    // padding-right: 0;
+}
+
+// .lists-block__cell:nth-child(2n) {
+//     margin-left: 10px;
+// }
+.lists-block__text {
+    color: $font_desc_h;
+    font-size: $font_mid;
+    line-height: 1.4;
+    @include line_clamp(2);
+}
+
+// 列表
+.lists-list__cell {
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    padding-bottom: 10px;
+    image {
+        margin-right: 10px;
+    }
+    .lists-list__desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .lists-line__desc {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 1;
+    }
+}
+
+.line_bd,
+.line_ft {
+    // @include text_ellips;
+    // max-width: 50px;
+    // overflow: hidden;
+}
+
+.line_bd {
+    flex-grow: 1;
+}
+
+.line_ft {
+    text-align: right;
+    color: #999999;
+    // text-align: center;
+}
+
+.cell_image {
+    background: #999;
+    height: 240rpx;
+    width: 100%;
+}
+
+.next {
+    color: $font_desc_h;
+    font-size: $font_mid;
+    @include clearfix();
+}
+
+.next_after {
+    // position: relative;
+    float: right;
+    color: $font_desc_h;
+    height: 20px;
+    width: 10px;
+    padding-top: 18rpx;
+    margin-left: 5px;
+    background-image: url(arrow-in.png);
+    background-size: 10px 20px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.font_mid {
+    font-size: $font_mid;
+}
+
+.font_min {
+    font-size: $font_min;
+    color: $font_desc_h;
+    // line-height: 1.8;
+}
+
+.min_img {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+}
+
+.mid_img {
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+}
+
+.cover_img {
+    width: 111px;
+    min-width: 111px;
+    height: 148px;
+}
+
+.col_b2 {
+    color: #b2b2b2;
+}
+
+.col_88 {
+    color: #888;
+}

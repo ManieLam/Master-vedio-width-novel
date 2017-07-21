@@ -1,0 +1,55 @@
+.single-lists_cell {
+    padding: 10px 0;
+    border-bottom: 1rpx solid $border_color;
+}
+
+.single-header,
+.single-block {
+    padding: 10px 30px;
+    background: #fff;
+}
+
+.single-header__hd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 14pt;
+    border-bottom: 1rpx solid #ec6941;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.single-header__bd {
+    display: flex;
+    justify-content: space-between;
+    .bd_left {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.single-block {
+    border-top: 5rpx solid $border_color
+}
+
+.desc_infoList {
+    padding-right: 5px;
+}
+
+.col_ff7e00 {
+    color: #ff7e00;
+}
+
+.btn_min {
+    color: $col_act;
+    border: 1rpx solid $col_act;
+    background: #fff;
+    margin: 10px 0;
+}
+
+.btn_min_hover,
+.btn_min_act {
+    background: $col_act;
+    color: #fff;
+}

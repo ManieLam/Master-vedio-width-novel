@@ -1,0 +1,96 @@
+<!--index.wxml-->
+<view class="p-single c-mode">
+    <view class="c-news">
+        <navigator url="../tag/index?tag_id={{topic.tag.id}}" class="c-news__header">
+            <view class="c-news__account">
+                <image class="c-news__account__avatar" src="{{topic.tag.thumb}}" background-size="cover"></image>
+                <view class="c-news__account__content">
+                    <view class="c-news__account__name">{{topic.tag.name}}</view>
+                    <view class="c-news__account__meta">{{topic.time}}</view>
+                </view>
+            </view>
+            <view class="c-news__after"></view>
+        </navigator>
+        <!-- END .c-news__header -->
+        <view class="c-news__body">
+            <view class="c-news__text">
+                <view wx:for="{{topic.texts}}" wx:key="text" wx:for-item="text" wx:for-index="j">{{text}}
+                    <view wx:if="{{j == topic.texts.length - 1 && topic.buy_url}}" class="c-action" catchtap="copyUrl" data-url="{{topic.buy_url}}">
+                        <view class="c-action__icon icon-cart"></view>
+                        <view class="c-action__text">立即购买</view>
+                    </view>
+                    <view wx:elif="{{j == topic.texts.length - 1 && topic.code}}" class="c-action" catchtap="copyCode" data-code="{{topic.code}}">
+                        <view class="c-action__icon icon-cart"></view>
+                        <view class="c-action__text">立即购买</view>
+                    </view>
+                </view>
+            </view>
+            <!-- END .c-news__text -->
+            <view class="c-grid c-grid--{{topic.images.length}}" wx:if="{{topic.topic_type === 'image'}}">
+                <view wx:for="{{topic.images}}" wx:for-index="j" wx:for-item="img" wx:key="item.thumb" class="c-grid__item is-{{j+1}}">
+                    <image src="{{img.thumb}}" mode="widthFix" catchtap="preview" data-url="{{img.original}}"></image>
+                </view>
+                <!-- END .c-grid__item -->
+            </view>
+            <!-- END .c-grid -->
+            <view class="c-video"  wx:elif="{{topic.topic_type === 'video'}}">
+                <video autoplay src="{{topic.video.src}}" ></video>
+            </view>
+        </view>
+
+        <view  class="c-audio" hidden="{{topic.topic_type !== 'audio'}}" >
+            <audio poster="{{topic.tag.thumb}}" name="{{topic.title}}" author="{{topic.author ? topic.author : ''}}" src="{{topic.audio}}" id="myAudio{{topic.id}}" controls></audio>
+        </view>
+
+        <!-- END .c-news__body -->
+    </view>
+    <!-- END .c-news -->
+    <view class="c-zan">
+        <view class="c-zan__count is-active" wx:if="{{is_liked}}" bindtap="unlike">{{like_count}}</view>
+        <view class="c-zan__count" wx:else bindtap="like">{{like_count}}</view>
+        <view class="c-zan__users">
+            <image wx:for="{{likes}}" wx:key="item.openid" src="{{item.avatarurl}}" background-size="cover"></image>
+        </view>
+    </view>
+    <!-- END .c-zan -->
+    <view class="s-comments">
+        <view class="s-comments__title">共{{reply_count}}条评论</view>
+        <view class="s-comments__content">
+            <view class="c-commentList">
+                <view class="c-comment" wx:for="{{replies}}" wx:key="item.id" bindtap="reply" data-openid="{{item.user.openid}}" data-id="{{item.id}}" data-user="{{item.user.nickname}}">
+                    <image src="{{item.user.avatarurl}}" class="c-comment__avatar" background-size="cover"></image>
+                    <view class="c-comment__content">
+                        <view class="c-comment__header">
+                            <view class="c-comment__user">{{item.user.nickname}}</view>
+                            <view class="c-comment__time">{{item.time}}</view>
+                        </view>
+                        <view class="c-comment__body">
+                            <block wx:if="{{item.reply_to.user}}">
+                                回复<view class="c-comment__replyto">{{item.reply_to.user ? item.reply_to.user.nickname + ': ' : ''}}</view>
+                            </block>
+                            {{item.text}}
+                        </view>
+                    </view>
+                </view>
+                <!-- END .c-comment -->
+            </view>
+            <!-- END .c-commentList -->
+        </view>
+        <!-- END .s-comments__content -->
+    </view>
+    <!-- END .s-comments -->
+</view>
+<!-- END .p-single -->
+<view class="c-commentBar" style="box-sizing:border-box">
+    <form bindsubmit="commentSubmit" report-submit="true">
+        <view class="c-commentBar__form">
+            <input name="text" class="c-commentBar__input {{reply_focus ? 'is-active' : ''}}" placeholder="{{placeholder}}" focus="{{reply_focus}}" bindfocus="onRepleyFocus" value="{{text}}" bindblur="onReplyBlur" hidden="{{!user}}" cursor-spacing="14" />
+            <view class="c-commentBar__disabled" wx:if="{{!user}}" bindtap="needAuth">登陆后才能评论</view>
+            <button class="c-commentBar__btn" formType="submit" hidden="{{!reply_focus || !user}}">提交</button>
+            <view class="c-commentBar__actions" hidden="{{reply_focus}}">
+                <view class="icon-star {{is_faved ? 'is-active' : ''}}" bindtap="toggleFavTopic"></view>
+                <button class="icon-share btn_no_style" open-type="share"></button>
+            </view>
+        </view>
+    </form>
+</view>

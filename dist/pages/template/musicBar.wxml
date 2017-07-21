@@ -1,0 +1,28 @@
+<template name="musicBar">
+    <view id="{{musicData.playList.id}}" class="flex flex-between flex-cloumn music-bar"  hover-class="none" wx:if="{{musicData.playList}}" bindtap="navigatorToDetail">
+        <!-- 播放条 无播放音乐是不显示 -->
+        <view class="control">
+            <view class="progress">
+                <!--<view class="current">{{songState.currentPosition}}</view>-->
+                <view class="time-bar">
+                    <view class="time-play" style="transform: translateX({{musicData.songState.progress}}%)"></view>
+                </view>
+                <!--<view class="total">{{songState.duration}}</view>-->
+            </view>
+        </view>
+        <!-- end .control -->
+        <view class="info flex flex-between">
+                <view class="flex flex-cloumn" style="width:60%">
+                    <view class="musicBar-title   ">{{musicData.playList.title}}</view>
+                    <view class="musicBar-desc   ">主播：{{musicData.current.singer||'佚名'}} </view>
+                </view>
+            <view class="flex flex-center mar_r10">
+                <!--<view class="icon icon-left icon-mar" catchtap="playPre"></view>-->
+                <view class="icon_big icon-stop icon-mar" wx:if="{{musicData.playing }}" catchtap="stopAudio"></view>
+                <view class="icon_big icon-start icon-mar" wx:if="{{!musicData.playing}}" data-index="{{musicData.index}}" catchtap="playAudio"></view>
+                <!--<view class="icon icon-right icon-mar" catchtap="playNext"></view>-->
+            </view>
+        </view>
+        <!-- end footer .info -->
+    </view>
+</template>
