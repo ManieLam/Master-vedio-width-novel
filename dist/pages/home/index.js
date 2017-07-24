@@ -43,34 +43,31 @@ Page({
         Require.call({
             api: Require.requirePath.index,
         }).then(res => {
-            // let category = res.category.filter(item => {
-            //     item.article.length > 3 ? item.article.splice(0, 4) : null;
-            // });
+            res.category.map(item => {
+                if (item.book.length > 3) item.book = item.book.slice(0, 3);
+            });
             res.mode = parseInt(res.mode);
             that.setData({
                 "initHeader.imgUrls": res.sliders,
                 homeList: res.category,
                 mode: res.mode,
             })
-            if (res.mode) {
-                console.log(1111);
-                that.loadTopics();
-            }
+            if (res.mode) { that.loadTopics(); }
         })
     },
     getCollectList(options = {}) {
         Require.queryFavList({
-            data: options
-        }).then(res => {
-            let targData = res.articles;
-            that.setData({
-                    colList: targData,
-                    isEmpty: targData.length == 0 ? true : false,
-                    next_cursor: res.next_cursor
-                })
-                // console.log("colList", that.data.colList);
-        })
-        console.log("isEmpty", that.data.isEmpty);
+                data: options
+            }).then(res => {
+                let targData = res.books;
+                that.setData({
+                        colList: targData,
+                        isEmpty: targData.length == 0 ? true : false,
+                        next_cursor: res.next_cursor
+                    })
+                    // console.log("colList", that.data.colList);
+            })
+            // console.log("isEmpty", that.data.isEmpty);
     },
     loadTopics: function(args) {
         const self = this

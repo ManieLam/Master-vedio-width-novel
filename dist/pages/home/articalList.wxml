@@ -8,7 +8,7 @@
             </view>
             <view class="lists-block__content ">
                 <navigator class="lists-block__cell" wx:for="{{booksList}}" wx:for-item="book" wx:key="" url="detail?id={{book.id}}">
-                    <image class="cell_image" src="{{book.thumbnail}}?imageView2/1/w/220/h/220"></image>
+                    <image class="cell_image" src="{{book.thumbnail}}"></image>
                     <view class="lists-block__text">{{book.title}}</view>
                 </navigator>
             </view>

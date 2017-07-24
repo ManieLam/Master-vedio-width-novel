@@ -1,8 +1,7 @@
 <!-- pages/home/index.wxml -->
 <import src="../template/navbar"  />
-<import src="../template/musicBar"/>
-<import src="../template/newsList"/>
-
+<import src="../template/musicBar"  />
+<import src="../template/newsList"  />
 <view class="m-lists_bar" wx:if="{{!mode}}">
     <template is="navbar" data="{{navbar:navbar,currentTab:currentTab}}"></template>
     <!-- 顶部tab导航 -->
@@ -13,8 +12,8 @@
                     interval="{{initHeader.interval}}" duration="{{initHeader.duration}}" style="height:100%">
                 <block wx:for="{{initHeader.imgUrls}}" wx:key="item">
                     <swiper-item>
-                        <navigator url="{{item.path}}" open-type="reLaunch"
-                                   style="background:url('{{item.image}}?imageView2/1/w/750/h/300')no-repeat;background-size:cover;background-position:center;height:100%">
+                        <navigator url="{{item.path}}" open-type="navigate"
+                                   style="background:url('{{item.image}}')no-repeat;background-size:cover;background-position:center;height:100%">
                         
                         </navigator>
                     </swiper-item>
@@ -23,63 +22,46 @@
         </view>
         <!-- END .lists-header -->
         <view class="lists-body">
-            <!-- 推荐专辑 -->
+            <!-- 专辑 -->
             <view class="lists-block" wx:for="{{homeList}}" wx:key="item">
                 <navigator class="lists-block__header flex flex-between flex-center" url="articalList?id={{item.id}}">
                     <text class="title">{{item.name}}</text>
-                    <view class="next"> 更多<view class="next_after"> </view> </view>
-                </navigator>
-                <view class="lists-block__content flex {{item.article.length>2?'flex-around':''}}">
-                    <navigator class="lists-block__cell" wx:for="{{item.article}}" wx:for-item="article" wx:key="" url="detail?id={{article.id}}">
-                        <image class="cell_image" src="{{article.thumbnail}}?imageView2/1/w/250/h/250"></image>
-                        <view class="lists-block__text">{{article.title}}</view>
-                    </navigator>
-                </view>
-            </view>
-        <!-- 最近更新 -->
-       <!-- <view class="lists-block">
-            <navigator class="lists-block__header flex flex-between" url="">
-                    <text class="title">最近更新</text>
-                    <view class="next "> 更多<view class="next_after"> </view> </view>
-                </navigator>
-            <view class="lists-block__content">
-                <navigator class="lists-list__cell" wx:for="123" wx:key="item">
-                    <image class="cell_image mid_img" src=""></image>
-                    <view class="lists-list__desc">
-                        <text class="font_mid">123456</text>
-                        <text class="font_min">mid</text>
-                        <text class="font_min">mini</text>
-                        
+                    <view class="next">
+                        更多<view class="next_after">
                     </view>
+                </view>
+            </navigator>
+            <view class="lists-block__content flex {{item.article.length>2?'flex-around':''}}">
+                <navigator class="lists-block__cell" wx:for="{{item.book}}" wx:for-item="article" wx:key=""
+                           url="detail?id={{article.id}}">
+                    <image class="cell_image" src="{{article.thumbnail}}"></image>
+                    <view class="lists-block__text">{{article.title}}</view>
                 </navigator>
             </view>
-        </view> -->
-         
-    </view>
-
-</view>
-<!-- tab=1 收藏 -->
-    <view class="lists-section" hidden="{{currentTab !==1 }}">
-       <view class="lists-block"  > 
-            <view class="lists-block__content">
-                <navigator class="lists-block__cell"  wx:for="{{colList}}" wx:for-item="book" wx:key="" url="detail?id={{book.id}}">
-                    <image class="cell_image" src="{{book.thumbnail}}?imageView2/1/w/250/h/250"></image>
-                    <view class="lists-block__text">{{book.title}}</view>
-                </navigator>
-            </view>
-        </view> 
-         <view class="hint" hidden="{{!isEmpty}}">
-            <view class="hint__line"></view>
-            <view>空空如也</view>
-            <view class="hint__line"></view>
         </view>
     </view>
-
+</view>
+<!-- tab=1 收藏 -->
+<view class="lists-section" hidden="{{currentTab !==1 }}">
+    <view class="lists-block">
+        <view class="lists-block__content">
+            <navigator class="lists-block__cell" wx:for="{{colList}}" wx:for-item="book" wx:key=""
+                       url="detail?id={{book.id}}">
+                <image class="cell_image" src="{{book.thumbnail}}"></image>
+                <view class="lists-block__text">{{book.title}}</view>
+            </navigator>
+        </view>
+    </view>
+    <view class="hint" hidden="{{!isEmpty}}">
+        <view class="hint__line"></view>
+        <view>空空如也</view>
+        <view class="hint__line"></view>
+    </view>
+</view>
 </view>
 <view style="height:142rpx;" wx:if="{{musicData.playList}}"></view>
- <!--音乐播放条 -->
+<!-- 音乐播放条 -->
 <template is="musicBar" data="{{musicData}}"></template>
-
 <template is="news" data="{{topics,mode,isDone}}"></template>
 
 

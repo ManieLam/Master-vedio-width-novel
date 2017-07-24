@@ -74,7 +74,7 @@ const guard = function(fn) {
 const favTopic = function favTopic(id) {
     return new Promise(function(resolve, reject) {
         wx.request({
-            url: API_HOST + 'api/mag.article.fav.json?access_token=' + Auth.token(),
+            url: API_HOST + requirePath.fav + '?access_token=' + Auth.token(),
             method: 'POST',
             data: {
                 post_id: id
@@ -107,7 +107,7 @@ const favTopic = function favTopic(id) {
 const unfavTopic = function unfavTopic(id) {
     return new Promise(function(resolve, reject) {
         wx.request({
-            url: API_HOST + 'api/mag.book.unfav.json?access_token=' + Auth.token(),
+            url: API_HOST + requirePath.unfav + '?access_token=' + Auth.token(),
             method: 'POST',
             data: {
                 post_id: id
@@ -142,7 +142,7 @@ const unfavTopic = function unfavTopic(id) {
 const queryFavList = function queryFavList(args) {
     return new Promise(function(resolve, reject) {
         wx.request({
-            url: API_HOST + 'api/mag.fav.list.json?access_token=' + Auth.token(),
+            url: API_HOST + requirePath.favList + '?access_token=' + Auth.token(),
             method: 'GET',
             data: args,
             success: function(res) {
@@ -166,9 +166,12 @@ const queryFavList = function queryFavList(args) {
 
 /*接口名称*/
 const requirePath = {
-    index: 'api/mag.home.json',
-    lists: 'api/mag.article.list.json',
-    detail: 'api/mag.article.get.json',
+    index: 'api/mag.home.json', //首页列表
+    lists: 'api/mag.book.list.json', //列表
+    detail: 'api/mag.book.get.json', //详情
+    favList: 'api/mag.fav.list.json', //收藏列表
+    unfav: 'api/mag.book.unfav.json', //取消收藏
+    fav: 'api/mag.book.fav.json', //收藏
 }
 
 module.exports = {

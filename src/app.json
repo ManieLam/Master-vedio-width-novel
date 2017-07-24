@@ -13,7 +13,7 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "粤语制造",
+        "navigationBarTitleText": "静静听书",
         "navigationBarTextStyle": "black"
     },
     "networkTimeout": {

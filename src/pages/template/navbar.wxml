@@ -9,4 +9,5 @@
             {{item}}
         </text>
     </view>
+    <view style="height:80rpx;"></view>
 </template>

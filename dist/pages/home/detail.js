@@ -30,7 +30,7 @@ Page({
             data: params
         }).then(res => {
             wx.setNavigationBarTitle({ title: res.page_title })
-            let result = res.article;
+            let result = res.book;
 
             WxParse.wxParse('content', 'html', result.content, that, 30);
             that.setData({

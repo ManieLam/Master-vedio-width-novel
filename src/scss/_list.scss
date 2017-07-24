@@ -13,7 +13,7 @@
 
 .lists-block__header {
     line-height: 2.2;
-    // padding: 0 10px;
+    padding: 0 5px;
 }
 
 .lists-block__content {
@@ -34,13 +34,12 @@
     box-sizing: border-box;
 }
 
-.lists-block__cell:nth-child(3n) {
-    // padding-right: 0;
+.lists-block__cell:nth-child(3n+1) {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-// .lists-block__cell:nth-child(2n) {
-//     margin-left: 10px;
-// }
 .lists-block__text {
     color: $font_desc_h;
     font-size: $font_mid;
