@@ -13,7 +13,7 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "静静听书",
+        "navigationBarTitleText": "图文音频模板",
         "navigationBarTextStyle": "black"
     },
     "networkTimeout": {
