@@ -1,0 +1,27 @@
+<template name="header">
+<!-- 仅一张静态图 -->
+	<view class="tplHeader_box">
+		<view class="tplHeader_bg"></view>
+	</view>
+</template>
+
+<template name="scrollHeader">
+	<!-- 头部滚动图  data="{{imgUrls,indicatorDots,autoplay,interval,duration, }}"-->
+	<view class="lists-header__scroll" style="height:{{height}}rpx">
+            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"
+                    interval="{{interval}}" duration="{{duration}}" style="height:100%">
+                <block wx:for="{{imgUrls}}" wx:key="item">
+                    <swiper-item>
+                       <!--带页面链接跳转-->
+                        <navigator url="{{item.path}}" open-type="navigate" wx:if="{{item.path||item.image}}"
+                                   style="background:url('{{item.image}}')no-repeat;background-size:cover;background-position:center;height:100%">
+                        </navigator>
+                        <!--小程序跳转-->
+                        <image src="{{item}}" mode="aspectFill" wx:elif="{{item.appid}}" bindtap="navigatorToMini"></image>
+                        <!--只有图片-->
+                        <image src="{{item}}" mode="aspectFill" wx:else></image>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+</template>

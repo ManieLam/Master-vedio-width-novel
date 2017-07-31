@@ -17,9 +17,7 @@ Page({
         isDone: false
     },
     getList(options = {}) {
-        let params = Object.assign({}, {
-            cat: that.data.id,
-        }, options)
+        let params = Object.assign({}, { cat: that.data.id, }, options);
         Require.call({
             api: Require.requirePath.lists,
             data: params
@@ -39,7 +37,7 @@ Page({
 
             that.setData({
                 listData: res,
-                booksList: res.books,
+                booksList: booksList,
                 share_title: res.share_title,
                 next_first: res.next_first,
                 next_cursor: res.next_cursor,
@@ -63,7 +61,7 @@ Page({
         isPull = true;
         // 每次下拉把上个加载出的next_cursor存储
         firstCursor = this.data.next_cursor;
-        that.getList();
+        that.getList({ first: that.data.next_first });
     },
 
     onReachBottom: function() {

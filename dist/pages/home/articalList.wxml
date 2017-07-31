@@ -1,4 +1,5 @@
 <!-- pages/home/articalList.wxml -->
+<import src="../template/hint.wxml"/>
 <view class="m-lists_bar">
     <!--  <view class="lists-body">-->
         <!-- 推荐专辑 -->
@@ -15,3 +16,4 @@
         </view>
     <!--</view>-->
 </view>
+<view wx:if="{{isDone}}"><template is="hint" data="{{text:'没有更多'}}"></template></view>

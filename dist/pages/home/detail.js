@@ -21,16 +21,14 @@ Page({
         isCurPlay: false, //判断是否是当前播放的专辑
     },
     getList(options = {}) {
-        let params = Object.assign({}, options, {
-            id: that.data.id,
-        })
+        let params = Object.assign({}, options, { id: that.data.id, })
         let accessToken = Auth.token() ? "?access_token=" + Auth.token() : "";
         Require.call({
             api: Require.requirePath.detail + accessToken,
             data: params
         }).then(res => {
             wx.setNavigationBarTitle({ title: res.page_title })
-            let result = res.book;
+            let result = res.article;
 
             WxParse.wxParse('content', 'html', result.content, that, 30);
             that.setData({

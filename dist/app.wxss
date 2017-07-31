@@ -12,8 +12,16 @@
 }
 
 .lists-block__header {
-  line-height: 2.2;
-  padding: 0 5px;
+  line-height: 1.2;
+  padding: 5px 0px;
+  margin: 0 5px;
+  vertical-align: bottom;
+}
+
+.lists-block__header .title {
+  border-left: 10rpx solid #ff7e00;
+  padding-left: 5px;
+  font-weight: 600;
 }
 
 .lists-block__content {
@@ -112,6 +120,8 @@
 }
 
 .next {
+  line-height: 2.2;
+  vertical-align: bottom;
   color: #595757;
   font-size: 14px;
 }

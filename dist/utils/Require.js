@@ -166,9 +166,9 @@ const queryFavList = function queryFavList(args) {
 
 /*接口名称*/
 const requirePath = {
-    index: 'api/mag.home.json', //首页列表
-    lists: 'api/mag.book.list.json', //列表
-    detail: 'api/mag.book.get.json', //详情
+    index: 'api/mag.home.json',
+    lists: 'api/mag.article.list.json',
+    detail: 'api/mag.article.get.json',
     favList: 'api/mag.fav.list.json', //收藏列表
     unfav: 'api/mag.book.unfav.json', //取消收藏
     fav: 'api/mag.book.fav.json', //收藏

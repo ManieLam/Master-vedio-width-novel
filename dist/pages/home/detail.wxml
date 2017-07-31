@@ -11,8 +11,8 @@
         </view>
         <view class="single-header__bd">
             <view class="bd_left">
-                <view class="font_min desc_info" >原著：{{bookList.song[0].writer}}</view>
-                <view  class="font_min desc_info">主播：{{bookList.song[0].singer}}</view>
+                <view class="font_min desc_info" >原著：{{bookList.audio[0].writer}}</view>
+                <view  class="font_min desc_info">主播：{{bookList.audio[0].singer}}</view>
             </view>
             <view class="bd_right">
                 <button size="mini" class="btn_min {{is_faved?'btn_min_act':''}}" bindtap="bindColToggle" hover-class="btn_min_hover"> {{is_faved?'已收藏':'我要收藏'}}</button>

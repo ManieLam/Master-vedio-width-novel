@@ -44,7 +44,7 @@ Page({
             api: Require.requirePath.index,
         }).then(res => {
             res.category.map(item => {
-                if (item.book.length > 3) item.book = item.book.slice(0, 3);
+                if (item.article.length > 3) item.article = item.article.slice(0, 3);
             });
             res.mode = parseInt(res.mode);
             that.setData({
@@ -53,6 +53,7 @@ Page({
                 mode: res.mode,
             })
             if (res.mode) { that.loadTopics(); }
+            console.log("homeList", that.data.homeList);
         })
     },
     getCollectList(options = {}) {

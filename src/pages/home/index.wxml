@@ -1,13 +1,17 @@
 <!-- pages/home/index.wxml -->
 <import src="../template/navbar"  />
+<import src="../template/headers"  />
 <import src="../template/musicBar"  />
 <import src="../template/newsList"  />
+<import src="../template/hint"  />
+
+
 <view class="m-lists_bar" wx:if="{{!mode}}">
     <template is="navbar" data="{{navbar:navbar,currentTab:currentTab}}"></template>
     <!-- 顶部tab导航 -->
     <!-- tab=0 发现 -->
     <view class="lists-section" hidden="{{currentTab !==0 }}">
-        <view class="lists-header__scroll" style="height:{{initHeader.height}}rpx">
+        <!--<view class="lists-header__scroll" style="height:{{initHeader.height}}rpx">
             <swiper indicator-dots="{{initHeader.indicatorDots}}" autoplay="{{initHeader.autoplay}}"
                     interval="{{initHeader.interval}}" duration="{{initHeader.duration}}" style="height:100%">
                 <block wx:for="{{initHeader.imgUrls}}" wx:key="item">
@@ -19,7 +23,8 @@
                     </swiper-item>
                 </block>
             </swiper>
-        </view>
+        </view>-->
+        <template is="scrollHeader" data="{{...initHeader}}">  </template>
         <!-- END .lists-header -->
         <view class="lists-body">
             <!-- 专辑 -->
@@ -32,7 +37,7 @@
                 </view>
             </navigator>
             <view class="lists-block__content flex {{item.article.length>2?'flex-around':''}}">
-                <navigator class="lists-block__cell" wx:for="{{item.book}}" wx:for-item="article" wx:key=""
+                <navigator class="lists-block__cell" wx:for="{{item.article}}" wx:for-item="article" wx:key=""
                            url="detail?id={{article.id}}">
                     <image class="cell_image" src="{{article.thumbnail}}"></image>
                     <view class="lists-block__text">{{article.title}}</view>
@@ -53,9 +58,7 @@
         </view>
     </view>
     <view class="hint" hidden="{{!isEmpty}}">
-        <view class="hint__line"></view>
-        <view>空空如也</view>
-        <view class="hint__line"></view>
+        <template is="hint" data="{{text:'空空如也'}}"></template>
     </view>
 </view>
 </view>

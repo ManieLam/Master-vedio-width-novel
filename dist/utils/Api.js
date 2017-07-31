@@ -1,4 +1,4 @@
-import { API_HOST, INVALID_TOKEN } from "config.js"
+import { APP_ID, API_HOST, INVALID_TOKEN } from "config.js"
 
 const Auth = require('./Auth')
     /**
